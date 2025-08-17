@@ -17,6 +17,8 @@ public class WebSocketClientEndpoint {
     private static final Logger LOG = LoggerFactory.getLogger(WebSocketClientEndpoint.class);
 
     private WebSocketSessionStateHolder sessionState = new WebSocketSessionStateHolder();
+    private DeepSeekChatService deepSeekChatService = new DeepSeekChatService();
+    private VoiceVoxService voiceVoxService = new VoiceVoxService();
 
     @OnOpen
     public void onOpen(Session session) {
@@ -37,6 +39,17 @@ public class WebSocketClientEndpoint {
             } else {
                 LOG.warn("[Session ID not found in message]");
             }
+        }
+
+        if (msgType.equals("notification")) {
+            String chatterName = JsonUtils.getValueByKey(message, "payload.event.chatter_user_name");
+            String chatMsg = JsonUtils.getValueByKey(message, "payload.event.message.text");
+
+            LOG.debug(chatterName + " : " + chatMsg);
+
+            String text = deepSeekChatService.sendChat(chatterName, chatMsg);
+
+            voiceVoxService.tts(text);
         }
     }
 

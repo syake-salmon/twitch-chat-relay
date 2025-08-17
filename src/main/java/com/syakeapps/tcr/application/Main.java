@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.syakeapps.tcr.service.ConfigService;
+import com.syakeapps.tcr.service.DeepSeekChatService;
 import com.syakeapps.tcr.service.TwitchAuthService;
 import com.syakeapps.tcr.service.TwitchAuthStateHolder;
 import com.syakeapps.tcr.service.TwitchEventSubService;
@@ -25,6 +26,7 @@ public class Main {
 
     private static TwitchAuthStateHolder authState = new TwitchAuthStateHolder();
     private static WebSocketSessionStateHolder sessionState = new WebSocketSessionStateHolder();
+    private static DeepSeekChatService deepSeekChatService = new DeepSeekChatService();
 
     /**
      * Main method to start the Twitch Chat Relay application.
@@ -37,7 +39,6 @@ public class Main {
             LOG.info("Twitch Chat Relay application has stopped.");
         }));
 
-
         try {
             LOG.info("Starting Twitch Chat Relay application...");
 
@@ -47,6 +48,9 @@ public class Main {
             // authenticate with Twitch and connect to WebSocket asynchronously
             CompletableFuture.runAsync(wrap(() -> twitchAuthService.authenticate()));
             CompletableFuture.runAsync(wrap(() -> webSocketClientService.connect()));
+
+            // Setup DeepSeek
+            deepSeekChatService.setup(configService.get(Constraints.DEEPSEEK_SETUP_PROMPT));
 
             // Wait for both authentication and WebSocket connection to complete
             String token = authState.awaitToken(60, TimeUnit.SECONDS);

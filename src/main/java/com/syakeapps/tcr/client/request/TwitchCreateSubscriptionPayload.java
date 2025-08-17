@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class CreateSubscriptionPayload {
-
+public class TwitchCreateSubscriptionPayload {
     @JsonProperty("type")
     String type;
 
@@ -114,21 +113,21 @@ public class CreateSubscriptionPayload {
         this.transport = transport;
     }
 
-    public static CreateSubscriptionPayload create() {
-        return new CreateSubscriptionPayload();
+    public static TwitchCreateSubscriptionPayload create() {
+        return new TwitchCreateSubscriptionPayload();
     }
 
-    public CreateSubscriptionPayload type(String type) {
+    public TwitchCreateSubscriptionPayload type(String type) {
         this.type = type;
         return this;
     }
 
-    public CreateSubscriptionPayload version(String version) {
+    public TwitchCreateSubscriptionPayload version(String version) {
         this.version = version;
         return this;
     }
 
-    public CreateSubscriptionPayload broadcasterUserId(String broadcasterUserId) {
+    public TwitchCreateSubscriptionPayload broadcasterUserId(String broadcasterUserId) {
         if (this.condition == null) {
             this.condition = new Condition();
         }
@@ -137,7 +136,7 @@ public class CreateSubscriptionPayload {
         return this;
     }
 
-    public CreateSubscriptionPayload userId(String userId) {
+    public TwitchCreateSubscriptionPayload userId(String userId) {
         if (this.condition == null) {
             this.condition = new Condition();
         }
@@ -146,7 +145,7 @@ public class CreateSubscriptionPayload {
         return this;
     }
 
-    public CreateSubscriptionPayload method(String method) {
+    public TwitchCreateSubscriptionPayload method(String method) {
         if (this.transport == null) {
             this.transport = new Transport();
         }
@@ -155,7 +154,7 @@ public class CreateSubscriptionPayload {
         return this;
     }
 
-    public CreateSubscriptionPayload sessionId(String sessionId) {
+    public TwitchCreateSubscriptionPayload sessionId(String sessionId) {
         if (this.transport == null) {
             this.transport = new Transport();
         }
@@ -174,7 +173,7 @@ public class CreateSubscriptionPayload {
 
     @Override
     public String toString() {
-        return "CreateSubscriptionPayload{" +
+        return "TwicthCreateSubscriptionPayload{" +
                 "type='" + type + '\'' +
                 ", version='" + version + '\'' +
                 ", condition=" + condition +

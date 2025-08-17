@@ -11,5 +11,13 @@ public class Constraints {
     public static final String TARGET_BROADCASTER_ID = "TARGET_BROADCASTER_ID";
     public static final String TARGET_USER_ID = "TARGET_USER_ID";
 
+    public static final String DEEPSEEK_API_ENDPOINT = "DEEPSEEK_API_ENDPOINT";
+    public static final String DEEPSEEK_API_KEY = "DEEPSEEK_API_KEY";
+    public static final String DEEPSEEK_MODEL = "DEEPSEEK_MODEL";
+    public static final String DEEPSEEK_SETUP_PROMPT = "DEEPSEEK_SETUP_PROMPT";
+
+    public static final String VOICEVOX_API_ENDPOINT="VOICEVOX_API_ENDPOINT";
+    public static final String VOICEVOX_SPEAKER_ID="VOICEVOX_SPEAKER_ID";
+
     public static final String DATABASE_FILEPATH = "DATABASE_FILEPATH";
 }

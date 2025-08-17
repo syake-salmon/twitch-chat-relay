@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.syakeapps.tcr.application.Constraints;
-import com.syakeapps.tcr.client.request.CreateSubscriptionPayload;
+import com.syakeapps.tcr.client.request.TwitchCreateSubscriptionPayload;
 import com.syakeapps.tcr.util.UriBuilder;
 
 /**
@@ -34,7 +34,7 @@ public class TwitchEventSubService {
                 .path("subscriptions")
                 .build();
 
-        String payload = CreateSubscriptionPayload.create()
+        String payload = TwitchCreateSubscriptionPayload.create()
                 .type("channel.chat.message")
                 .version("1")
                 .broadcasterUserId(conf.get(Constraints.TARGET_BROADCASTER_ID))
