@@ -3,11 +3,11 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} \(%-8.8thread\) [%-5level] %logger{0} - %msg%n%ex</pattern>
-            <charset>UTF-8</charset>
+            <charset>MS932</charset>
         </encoder>
     </appender>
 
-    <root level="ALL">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
