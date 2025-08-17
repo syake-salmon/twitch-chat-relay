@@ -28,7 +28,9 @@ public class ConfigService {
         if (env == null) {
             env = Dotenv.configure().ignoreIfMissing().load();
             LOG.debug("Environment variables loaded.");
-            env.entries().forEach(e -> LOG.debug("{}: {}", e.getKey(), e.getValue()));
+            if (LOG.isTraceEnabled()) {
+                env.entries().forEach(e -> LOG.trace("{}: {}", e.getKey(), e.getValue()));
+            }
         }
 
         return this;
